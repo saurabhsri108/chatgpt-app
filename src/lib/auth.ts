@@ -1,9 +1,17 @@
 import { betterAuth } from "better-auth";
-import Database from "better-sqlite3";
+import { LibsqlDialect } from "@libsql/kysely-libsql";
 import { env } from "./env";
 
+const dialect = new LibsqlDialect({
+  url: env.TURSO_DATABASE_URL,
+  authToken: env.TURSO_AUTH_TOKEN,
+});
+
 export const auth = betterAuth({
-  database: new Database("./nextgpt.db"),
+  database: {
+    dialect,
+    type: "sqlite",
+  },
   socialProviders: {
     github: {
       clientId: env.GITHUB_CLIENT_ID,
