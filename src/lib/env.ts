@@ -9,6 +9,7 @@ export const env = createEnv({
     GITHUB_CLIENT_SECRET: z.string().min(40),
     TURSO_AUTH_TOKEN: z.string(),
     TURSO_DATABASE_URL: z.string().url(),
+    OPENAI_API_KEY: z.string().min(164),
   },
   client: {},
   runtimeEnv: {
@@ -18,5 +19,6 @@ export const env = createEnv({
     GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
     TURSO_DATABASE_URL: process.env.TURSO_DATABASE_URL,
     TURSO_AUTH_TOKEN: process.env.TURSO_AUTH_TOKEN,
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   },
 });
